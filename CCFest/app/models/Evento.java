@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -49,7 +50,7 @@ public class Evento {
 	@NotNull
 	private List<Tema> temas = new ArrayList<>();
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Local local;
 
 	public Evento() {
