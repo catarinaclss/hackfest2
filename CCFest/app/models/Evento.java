@@ -12,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -47,16 +48,20 @@ public class Evento {
 	@Enumerated(value = EnumType.ORDINAL)
 	@NotNull
 	private List<Tema> temas = new ArrayList<>();
+	
+	@OneToOne
+	private Local local;
 
 	public Evento() {
 	}
 
-	public Evento(String titulo, String descricao, Date data, List<Tema> temas)
+	public Evento(String titulo, String descricao, Date data, List<Tema> temas, Local local)
 			throws EventoInvalidoException {
 		setTitulo(titulo);
 		setDescricao(descricao);
 		setData(data);
 		setTemas(temas);
+		setLocal(local);
 	}
 
 	public String getTitulo() {
@@ -113,5 +118,13 @@ public class Evento {
 		if (temas.size() == 0)
 			throw new EventoInvalidoException("Nenhum tema");
 		this.temas = temas;
+	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
 	}
 }
