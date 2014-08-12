@@ -57,7 +57,7 @@ public class Evento {
 	}
 
 	public Evento(String titulo, String descricao, Date data, List<Tema> temas,
-			Local local, Usuario adm) throws EventoInvalidoException {
+			Local local) throws EventoInvalidoException {
 		setTitulo(titulo);
 		setDescricao(descricao);
 		setData(data);

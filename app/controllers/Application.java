@@ -74,7 +74,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Python na mente e coração",
 					"Neste evento iremos debater e propor soluções para novas releases.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -88,7 +88,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Luta de robôs",
 					"Traga seu robô feito em arduino e traga para competir com outros.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -102,7 +102,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"IV Olímpiadas de programação da UFCG",
 					"Traga sua equipe e venha competir nessa maratona de programação.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -116,7 +116,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"II Encontro para programadores de Python",
 					"O encontro contará com a participação de um de seus fundadores, inúmeras palestras e maratonas. Não percam!!",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -131,7 +131,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"III Semana da Computação Verde",
 					"Exiba sua proposta para uma computação mais verde e concorra a diversos prêmios",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -145,7 +145,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Web em foco",
 					"Este evento contará com a participação de um dos fundadores da Web, e juntos iremos compartilhar diversas dicas e boas práticas nessa vasta área.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -159,7 +159,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Minicurso Arduino",
 					"Evento destinado a alunos de LOAC, caso sobre vagas iremos disponibilizar em breve",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -173,7 +173,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Curto circuito",
 					"Evento sobre circuitos eletrônicos, venha dar curto em seus circuitos também!!",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -186,7 +186,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"VI Encontro de Docentes de CC",
 					"Evento para debatermos propostas e soluções para os problemas enfrentados pelos alunos de CC.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
@@ -200,7 +200,7 @@ public class Application extends Controller {
 			evento = new Evento(
 					"Café com Java",
 					"Curso destinado apenas a alunos cursando a disciplina LP2.",
-					calendar.getTime(), temas, local, admin);
+					calendar.getTime(), temas, local);
 			eventos.add(evento);
 			criarEvento(evento);
 
