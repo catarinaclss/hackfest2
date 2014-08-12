@@ -2,8 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+
 # Home page
-GET     /                           controllers.Application.index()
+GET     /index                           controllers.Application.index()
+GET     /logout							 controllers.Login.logout()
+
+# Login
+
+GET     /                                 controllers.Login.show()
+POST    /login                           controllers.Login.authenticate()
+
+# Registro
+GET     /registrar                       controllers.Registro.show()
+POST    /registrar                       controllers.Registro.registrar()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
