@@ -23,7 +23,7 @@ import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.Required;
 
 @Entity
-public abstract class Evento {
+public class Evento {
 
 	@Id
 	@GeneratedValue
@@ -49,14 +49,15 @@ public abstract class Evento {
 	@Enumerated(value = EnumType.ORDINAL)
 	@NotNull
 	private List<Tema> temas = new ArrayList<>();
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Local local;
 
-	public Evento() {}
+	public Evento() {
+	}
 
-	public Evento(String titulo, String descricao, Date data, List<Tema> temas, Local local, Administrador adm)
-			throws EventoInvalidoException {
+	public Evento(String titulo, String descricao, Date data, List<Tema> temas,
+			Local local, Usuario adm) throws EventoInvalidoException {
 		setTitulo(titulo);
 		setDescricao(descricao);
 		setData(data);
@@ -127,8 +128,8 @@ public abstract class Evento {
 	public void setLocal(Local local) {
 		this.local = local;
 	}
-	
-	public void participar(Usuario usuario){
+
+	public void participar(Usuario usuario) {
 		getParticipantes().add(usuario);
 	}
 

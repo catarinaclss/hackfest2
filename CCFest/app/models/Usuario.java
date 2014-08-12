@@ -58,6 +58,5 @@ public abstract class Usuario {
 	public void setNome(String nome) throws PessoaInvalidaException {
 		this.nome = nome;
 	}
-	
-	public abstract 
+
 }
