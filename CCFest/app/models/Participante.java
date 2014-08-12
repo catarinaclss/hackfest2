@@ -13,10 +13,9 @@ import org.hibernate.validator.constraints.Email;
 import play.data.validation.Constraints.MaxLength;
 
 @Entity
-public class Participante {
+public class Participante extends Usuario {
 
-	private final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	
 
 	@Id
 	@GeneratedValue
@@ -58,16 +57,6 @@ public class Participante {
 
 	public String getEmail() {
 		return email;
-	}
-
-	public void setEmail(String email) throws PessoaInvalidaException {
-		if (email == null)
-			throw new PessoaInvalidaException("Parametro nulo");
-		if (!email.matches(EMAIL_PATTERN))
-			throw new PessoaInvalidaException("Email inválido");
-		if (email.length() > 70)
-			throw new PessoaInvalidaException("Email longo");
-		this.email = email;
 	}
 
 	public Evento getEvento() {
