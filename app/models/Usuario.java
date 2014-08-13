@@ -7,22 +7,23 @@ import javax.persistence.Id;
 
 import models.exceptions.PessoaInvalidaException;
 
-@Entity(name="Usuario")
-public abstract class Usuario {
-	
+@Entity(name = "Usuario")
+public class Usuario {
+
 	private final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	
+
 	private String email;
 	private String senha;
 	private String nome;
-	
-	public Usuario() {}
-	
+
+	public Usuario() {
+	}
+
 	public Usuario(String email, String senha, String nome) {
 		this.email = email;
 		this.nome = nome;

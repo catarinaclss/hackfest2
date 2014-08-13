@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.Evento;
+import models.Local;
 import models.Participante;
 import models.Tema;
 import models.exceptions.EventoInvalidoException;
@@ -24,7 +25,7 @@ public class ParticipanteTest {
 		temas = new ArrayList<>();
 		temas.add(Tema.ARDUINO);
 		try {
-			evento = new Evento("Python na cabeça", "Vamos programar em Python!", new Date(), temas);
+			evento = new Evento("Python na cabeça", "Vamos programar em Python!", new Date(), temas, new Local());
 		} catch (EventoInvalidoException e) {
 			fail();
 		}

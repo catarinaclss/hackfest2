@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import models.Evento;
+import models.Local;
+import models.Participante;
 import models.Tema;
 import models.exceptions.EventoInvalidoException;
 
@@ -26,8 +28,8 @@ public class EventoTest {
 	public void deveCriarUmEvento() {
 		temas.add(Tema.ARDUINO);
 		try {
-			new Evento("Python na cabeça", "Vamos programar em Python!", new Date(), temas);
-		} catch (EventoInvalidoException _) {
+			new Evento("Python na cabeça", "Vamos programar em Python!", new Date(), temas, new Local());
+		} catch (EventoInvalidoException e) {
 			fail();
 		}
 	}
@@ -36,55 +38,55 @@ public class EventoTest {
 	public void deveDarException() {
 		try {
 			new Evento(null,
-					"Vamos programar em Python!", new Date(), temas);
+					"Vamos programar em Python!", new Date(), temas, new Local());
 			fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Parametro nulo", e.getMessage());
 		}
 		try {
 			new Evento("Python na cabeça",
-					null, new Date(), temas);
+					null, new Date(), temas, new Local());
 			fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Parametro nulo", e.getMessage());
 		}
 		try {
 			new Evento("Python na cabeça",
-					"Vamos programar em Python!", null, temas);
+				"Vamos programar em Python!", null, temas, new Local());
 			fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Parametro nulo", e.getMessage());
 		}
-		try {
+	try {
 			new Evento("Python na cabeça",
-					"Vamos programar em Python!", new Date(), null);
-			fail();
+					"Vamos programar em Python!", new Date(), null, new Local());
+		fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Parametro nulo", e.getMessage());
-		}
+	}
 		try {
 			new Evento("Python na cabeça",
-					"Vamos programar em Python!", new Date(), new ArrayList<Tema>());
-			fail();
+					"Vamos programar em Python!", new Date(), new ArrayList<Tema>(), new Local());
+		fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Nenhum tema", e.getMessage());
 		}
 		try {
 			String descricaoLonga = "Vamos programar em Python!";
 			
-			for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 				descricaoLonga += descricaoLonga;
 			}
 			
 			new Evento("Python na cabeça",
-					descricaoLonga, new Date(), temas);
+				descricaoLonga, new Date(), temas, new Local());
 			fail();
 		} catch (EventoInvalidoException e) {
-			assertEquals("Descrição longa", e.getMessage());
+		assertEquals("Descrição longa", e.getMessage());
 		}
 		try {
 			new Evento("Python na cabeça na mente e no coração uhuuu",
-					"Vamos programar em Python!", new Date(), null);
+					"Vamos programar em Python!", new Date(), null, new Local());
 			fail();
 		} catch (EventoInvalidoException e) {
 			assertEquals("Título longo", e.getMessage());
@@ -94,10 +96,28 @@ public class EventoTest {
 			calendar.add(Calendar.DAY_OF_WEEK, -1);
 
 			new Evento("Python na cabeça",
-					"Vamos programar em Python!", calendar.getTime(), temas);
+					"Vamos programar em Python!", calendar.getTime(), temas, new Local());
 			fail();
-		} catch (EventoInvalidoException e) {
+	} catch (EventoInvalidoException e) {
 			assertEquals("Data inválida", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void devePossuirLimiteDeParticipantes(){
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_WEEK, -1);
+		
+		Local local = new Local();
+		local.setCapacidade(3);
+		try {
+			Evento evento = new Evento("", "", new Date(), temas, local);
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+		} catch (EventoInvalidoException e) {
+			assertEquals("Vagas esgotadas para este evento", e.getMessage());
 		}
 	}
 }

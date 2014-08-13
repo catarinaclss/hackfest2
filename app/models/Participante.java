@@ -1,36 +1,13 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 import models.exceptions.PessoaInvalidaException;
 
-import org.hibernate.validator.constraints.Email;
-
-import play.data.validation.Constraints.MaxLength;
-
-@Entity
 public class Participante extends Usuario {
 
-	
-
-	@Id
-	@GeneratedValue
-	private long id;
-
-	@NotNull
-	@MaxLength(value = 70)
 	private String nome;
 
-	@Email
-	@NotNull
-	@MaxLength(value = 70)
 	private String email;
-
-	@ManyToOne
 	private Evento evento;
 
 	public Participante() {

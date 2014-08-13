@@ -1,7 +1,10 @@
 package models;
 
-public class Administrador extends Usuario{
-	
-	
+import javax.persistence.Entity;
 
+@Entity
+public class Administrador extends Usuario {
+
+	public Administrador() {
+	}
 }

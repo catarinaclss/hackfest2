@@ -12,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -42,7 +43,8 @@ public class Evento {
 	@Required
 	private Date data;
 
-	@OneToMany(mappedBy = "evento")
+	@OneToMany()
+	@JoinColumn
 	private List<Usuario> participantes = new ArrayList<>();
 
 	@ElementCollection
@@ -129,8 +131,13 @@ public class Evento {
 		this.local = local;
 	}
 
-	public void participar(Usuario usuario) {
-		getParticipantes().add(usuario);
+	public void participar(Usuario usuario) throws EventoInvalidoException {
+		if (getParticipantes().size() <= this.getLocal().getCapacidade()) {
+			getParticipantes().add(usuario);
+		} else {
+			throw new EventoInvalidoException(
+					"Vagas esgotadas para este evento");
+		}
 	}
 
 	public List<Usuario> getParticipantes() {
