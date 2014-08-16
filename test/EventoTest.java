@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.Evento;
+import models.EventoPrioritario;
 import models.Local;
 import models.Participante;
 import models.Tema;
@@ -104,20 +105,33 @@ public class EventoTest {
 	}
 	
 	@Test
-	public void devePossuirLimiteDeParticipantes(){
+	public void devePossuirLimiteDeParticipantes() throws EventoInvalidoException{
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DAY_OF_WEEK, -1);
-		
+		temas.add(Tema.ARDUINO);
 		Local local = new Local();
 		local.setCapacidade(3);
+
 		try {
 			Evento evento = new Evento("", "", new Date(), temas, local);
 			evento.participar(new Participante());
 			evento.participar(new Participante());
 			evento.participar(new Participante());
 			evento.participar(new Participante());
-		} catch (EventoInvalidoException e) {
+		}catch(EventoInvalidoException e) {
 			assertEquals("Vagas esgotadas para este evento", e.getMessage());
 		}
+		
+		try {
+			Evento evento = new EventoPrioritario();
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+			evento.participar(new Participante());
+		}catch(EventoInvalidoException e) {
+			assertEquals("Vagas esgotadas para este evento", e.getMessage());
+		}
+		
+	
 	}
 }

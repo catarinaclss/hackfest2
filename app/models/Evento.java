@@ -53,13 +53,11 @@ public class Evento {
 	private List<Tema> temas = new ArrayList<>();
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Local local;
+	private Local local = new Local();
 
-	public Evento() {
-	}
+	public Evento() {}
 
-	public Evento(String titulo, String descricao, Date data, List<Tema> temas,
-			Local local) throws EventoInvalidoException {
+	public Evento(String titulo, String descricao, Date data, List<Tema> temas, Local local) throws EventoInvalidoException {
 		setTitulo(titulo);
 		setDescricao(descricao);
 		setData(data);
@@ -131,13 +129,16 @@ public class Evento {
 		this.local = local;
 	}
 
-	public void participar(Usuario usuario) throws EventoInvalidoException {
-		if (getParticipantes().size() <= this.getLocal().getCapacidade()) {
+	public void participar(Usuario usuario) throws Exception {
+		if (existemVagas()) {
 			getParticipantes().add(usuario);
 		} else {
-			throw new EventoInvalidoException(
-					"Vagas esgotadas para este evento");
+			throw new EventoInvalidoException("Vagas esgotadas para este evento");
 		}
+	}
+	
+	public boolean existemVagas(){
+		return getParticipantes().size() <= this.getLocal().getCapacidade();
 	}
 
 	public List<Usuario> getParticipantes() {

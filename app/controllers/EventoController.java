@@ -7,9 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 import models.Evento;
-import models.EventoComparator;
 import models.Participante;
 import models.Tema;
+import models.Comparators.EventoComparator;
 import models.exceptions.EventoInvalidoException;
 import models.exceptions.PessoaInvalidaException;
 import play.data.Form;

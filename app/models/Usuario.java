@@ -16,18 +16,18 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-
 	private String email;
 	private String senha;
 	private String nome;
+	private Experiencia experiencia;
 
-	public Usuario() {
-	}
+	public Usuario() {}
 
 	public Usuario(String email, String senha, String nome) {
 		this.email = email;
 		this.nome = nome;
 		this.senha = senha;
+		this.experiencia = new ExperienciaComoParticipante();
 	}
 
 	public String getEmail() {
@@ -44,12 +44,12 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getPass() {
+	public String getSenha() {
 		return senha;
 	}
 
-	public void setPass(String pass) {
-		this.senha = pass;
+	public void setSenha(String novaSenha) {
+		this.senha = novaSenha;
 	}
 
 	public String getNome() {
@@ -58,6 +58,11 @@ public class Usuario {
 
 	public void setNome(String nome) throws PessoaInvalidaException {
 		this.nome = nome;
+	}
+
+	public int getExperiencia() {
+		
+		return 0;
 	}
 
 }
