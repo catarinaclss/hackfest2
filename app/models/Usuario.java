@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import models.exceptions.PessoaInvalidaException;
 
@@ -20,17 +21,19 @@ public class Usuario {
 	private String senha;
 	private String nome;
 
+	@Transient
+	// Depois tem q mudar se quiser salvar no BD. transient é pra nao salvar
 	private Experiencia experiencia;
-	
 
-	public Usuario() {}
+	public Usuario() {
+	}
 
 	public Usuario(String email, String senha, String nome) {
 		this.email = email;
 		this.nome = nome;
 		this.senha = senha;
 		this.experiencia = new Experiencia();
-	
+
 	}
 
 	public String getEmail() {
@@ -66,8 +69,5 @@ public class Usuario {
 	public Experiencia getExperiencia() {
 		return experiencia;
 	}
-	
-	
-
 
 }
