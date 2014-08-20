@@ -19,7 +19,9 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String nome;
+
 	private Experiencia experiencia;
+	
 
 	public Usuario() {}
 
@@ -27,7 +29,8 @@ public class Usuario {
 		this.email = email;
 		this.nome = nome;
 		this.senha = senha;
-		this.experiencia = new ExperienciaComoParticipante();
+		this.experiencia = new Experiencia();
+	
 	}
 
 	public String getEmail() {
@@ -60,9 +63,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public int getExperiencia() {
-		
-		return 0;
+	public Experiencia getExperiencia() {
+		return experiencia;
 	}
+	
+	
+
 
 }

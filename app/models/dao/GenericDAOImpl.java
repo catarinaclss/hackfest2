@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import models.Usuario;
 import play.db.jpa.JPA;
 
 /**
